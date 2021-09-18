@@ -1,6 +1,7 @@
 import * as Notifications from 'expo-notifications';
 import Constants from 'expo-constants';
 import { Platform } from 'react-native';
+import messaging from '@react-native-firebase/messaging';
 
 
 export default function useNotification(){
@@ -39,7 +40,19 @@ export default function useNotification(){
     return token
   }
 
+  async function requestNotificationUserPermission() {
+    const authStatus = await messaging().requestPermission();
+    const enabled =
+      authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
+      authStatus === messaging.AuthorizationStatus.PROVISIONAL;
+  
+    if (enabled) {
+      console.log('Authorization status:', authStatus);
+    }
+  }
+
   return {
     registerForPushNotification,
+    requestNotificationUserPermission
   }
 }

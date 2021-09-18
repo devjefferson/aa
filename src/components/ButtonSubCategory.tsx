@@ -4,8 +4,6 @@ import { RectButton, RectButtonProperties } from 'react-native-gesture-handler';
 import colors from '../Styles/colors';
 import fonts from '../Styles/fonts';
 
-// import { Container } from './styles';
-
 interface ButtonData extends RectButtonProperties{
   title: string
   active?: boolean
