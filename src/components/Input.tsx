@@ -52,7 +52,6 @@ const styles = StyleSheet.create({
     marginBottom: -10,
     marginLeft: 5,
     marginTop: 10,
-
   },
   inputContent: {
     flexDirection: "row",

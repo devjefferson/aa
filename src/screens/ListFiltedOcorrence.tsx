@@ -9,6 +9,7 @@ import colors from "../Styles/colors";
 import fonts from "../Styles/fonts";
 import search from '../image/search.png'
 import { DataCategoryProps } from "../hooks/useOcorrence";
+import Admob from "../components/Admob";
 
 
 
@@ -118,10 +119,15 @@ export function ListFiltedOcorrence() {
         data={ocorrence}
         keyExtractor={(item, value) => String(value)}
         renderItem={({index, item})=>(
+          <>
+          {index % 8 == 0 ? <View style={styles.ads}><Admob 
+            id={"ca-app-pub-7185818297801314/9092724216"}
+          /></View> : <></>}
           <CardOcorrencePrimary
             index={index}
             data={item as any}
             onPress={() => handleDetails(item)} />
+          </>
         )} 
         removeClippedSubviews={true}
         showsVerticalScrollIndicator={false}
@@ -153,6 +159,12 @@ const styles = StyleSheet.create({
     fontSize: 22,
     color: colors.segundary,
   },
+  ads:{
+    // width: Dimensions.get('window').width - 10,
+     justifyContent: 'center',
+     alignItems: 'center',
+     marginVertical: 3
+   },
   containerSearch:{
    
   

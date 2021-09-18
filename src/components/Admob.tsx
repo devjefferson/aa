@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Constants from 'expo-constants';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 import {
   AdMobBanner
 } from 'expo-ads-admob';

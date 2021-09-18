@@ -6,15 +6,10 @@ import { DataCategoryProps } from '../hooks/useOcorrence';
 import colors from '../Styles/colors';
 import fonts from '../Styles/fonts';
 import FormatDataString from '../utils/FormatDataString';
-import Admob from './Admob';
 
 import viewImage from '../image/cards/view.png'
 import sharedImage from '../image/cards/shared.png'
 
-
-interface Admob{
-  admob: number
-}
 interface CardOcorrenceProps extends RectButtonProperties{
   data: DataCategoryProps
   index: number
@@ -22,10 +17,6 @@ interface CardOcorrenceProps extends RectButtonProperties{
 
 export function CardOcorrencePrimary({data, index, ...rest}: CardOcorrenceProps){
   return(
-    <>
-    {index % 8 == 0 ? <View style={styles.ads}><Admob
-      id="ca-app-pub-7185818297801314/8423851824"
-    /></View> : <></>}
     <SafeAreaView
     >
     <RectButton 
@@ -80,7 +71,6 @@ export function CardOcorrencePrimary({data, index, ...rest}: CardOcorrenceProps)
       </View>
     </RectButton>
     </SafeAreaView>
-    </>
   );
 }
 

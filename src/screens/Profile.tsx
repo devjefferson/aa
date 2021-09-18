@@ -18,6 +18,7 @@ import colors from "../Styles/colors";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { DataCategoryProps } from "../hooks/useOcorrence";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import Admob from "../components/Admob";
 
 export function Profile() {
   const [ocorrence, setOcorrence] = useState<DataCategoryProps[]>();
@@ -124,12 +125,17 @@ export function Profile() {
         data={ocorrence}
         keyExtractor={(item, value) => String(value)}
         renderItem={({ index, item }) => (
+          <>
+          {index % 8 == 0 ? <View style={styles.ads}><Admob
+            id={"ca-app-pub-7185818297801314/9092724216"}
+          /></View> : <></>}
           <CardOcorrenceSegundary
             index={index}
             data={item}
             onClick={() => handleDetails(item)}
             deleteOcorrence={() => handleDelete(item.id)}
           />
+          </>
         )}
         onEndReachedThreshold={0.1}
         onEndReached={({ distanceFromEnd }) => handleFetchMore(distanceFromEnd)}
@@ -150,7 +156,11 @@ const styles = StyleSheet.create({
   content: {
     paddingHorizontal: 20,
   },
-
+  ads:{
+     justifyContent: 'center',
+     alignItems: 'center',
+     marginVertical: 3
+   },
   header: {
     flexDirection: "row",
     width: Dimensions.get("window").width - 80,
