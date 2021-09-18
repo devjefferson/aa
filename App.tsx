@@ -1,21 +1,44 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from "expo-status-bar";
+import React, { useEffect } from "react";
+import {
+  useFonts,
+  Poppins_300Light,
+  Poppins_400Regular,
+  Poppins_600SemiBold,
+} from "@expo-google-fonts/poppins";
+import { AppProvider } from "./src/Provider";
+import Router from "./src/Router";
+import colors from "./src/Styles/colors";
+import usePermissions from './src/hooks/usePermissions'
+
+
 
 export default function App() {
+  const { RequestPermissionLocation } = usePermissions()
+ 
+  const [fontsLoaded] = useFonts({
+    Poppins_300Light,
+    Poppins_400Regular,
+    Poppins_600SemiBold,
+  });
+
+ 
+
+  useEffect(()=>{
+    RequestPermissionLocation()
+    return ()=>{
+      new AbortController().abort()
+    }
+  },[])
+
+
+  if (!fontsLoaded) {
+    return null;
+  }
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <AppProvider>
+      <StatusBar style="light" backgroundColor={colors.background}  />
+      <Router />      
+    </AppProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

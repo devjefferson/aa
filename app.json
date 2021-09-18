@@ -1,14 +1,14 @@
 {
   "expo": {
-    "name": "afa",
-    "slug": "afa",
-    "version": "1.0.0",
+    "name": "Alerta Assalto",
+    "slug": "alerta-assalto",
+    "version": "1.0.5",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "resizeMode": "cover",
+      "backgroundColor": "#2F4858"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -16,17 +16,46 @@
     "assetBundlePatterns": [
       "**/*"
     ],
+    "notification":{
+      "icon": "./assets/iconNotification.png",
+      "color": "#D59563"
+    },
+    "plugins": [
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/iconNotification.png",
+          "color": "#D59563"
+        }
+      ],
+      "expo-ads-admob"
+    ],
     "ios": {
       "supportsTablet": true
     },
     "android": {
+      "permissions": [
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_FINE_LOCATION",
+        "NOTIFICATIONS"
+      ],
+      "googleServicesFile": "./google-services.json",
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyDFLKeAHenqKKyPTz8ElxoWCs8v_XCNMGc"
+        },
+        "googleMobileAdsAppId": "ca-app-pub-7185818297801314~8348680268"
+      },
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
-      }
+        "backgroundColor": "#2F4858"
+      },
+      "package": "com.alertaassalto",
+      "versionCode": 5
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": ""
   }
 }
